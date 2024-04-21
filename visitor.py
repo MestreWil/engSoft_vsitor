@@ -4,13 +4,20 @@ from typing import List
 
 
 class InterfaceVisitor(ABC):
-
+    """
+    A InterfaceVisitor declara um método `aceita` que deve levar o
+    interface base do visitante como argumento.
+    """
     @abstractmethod
     def aceita(self, visitor: Visitor) -> None:
         pass
 
 
 class Componente_concreto_a(InterfaceVisitor):
+    """
+     Cada Componente Concreto deve implementar o método `aceita` de tal forma
+    que chama o método do visitante correspondente à classe do componente.
+    """
     
     def aceita(self, visitor: Visitor) -> None:
         
