@@ -3,9 +3,9 @@ from abc import ABC, abstractmethod
 from typing import List
 
 
-class InterfaceVisitor(ABC):
+class Element(ABC):
     """
-    A InterfaceVisitor declara um método `aceita` que deve levar o
+    A Element declara um método `aceita` que deve levar o
     interface base do visitante como argumento.
     """
     @abstractmethod
@@ -13,7 +13,7 @@ class InterfaceVisitor(ABC):
         pass
 
 
-class Componente_concreto_a(InterfaceVisitor):
+class Componente_concreto_a(Element):
     """
      Cada Componente Concreto deve implementar o método `aceita` de tal forma
     que chama o método do visitante correspondente à classe do componente.
@@ -24,12 +24,10 @@ class Componente_concreto_a(InterfaceVisitor):
         visitor.visita_a_objeto_a(self)
 
     def metodo_exclusivo_do_componente_a(self) -> str:
-        
-
         return "Carro Flex"
 
 
-class Componente_concreto_b(InterfaceVisitor):
+class Componente_concreto_b(Element):
     
 
     def aceita(self, visitor: Visitor):
@@ -64,7 +62,7 @@ class Componente_visitor_2(Visitor):
         print(f"{element.metodo_exclusivo_do_componente_b()} + Componente_visitor_2")
 
 
-def codigo_cliente(componentes: List[InterfaceVisitor], visitor: Visitor) -> None:
+def codigo_cliente(componentes: List[Element], visitor: Visitor) -> None:
   
     for componente in componentes:
         componente.aceita(visitor)
